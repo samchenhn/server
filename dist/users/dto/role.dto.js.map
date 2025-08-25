@@ -1,0 +1,1 @@
+{"version":3,"file":"role.dto.js","sourceRoot":"","sources":["../../../src/users/dto/role.dto.ts"],"names":[],"mappings":";;;AAAA,8DAAsE;AAKtE,MAAa,OAAO;IAElB,MAAM,CAAW;IAGjB,IAAI,CAAS;IAEb,YAAY,MAAgB;QAC1B,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;QACrB,IAAI,CAAC,IAAI,GAAG,IAAA,wBAAW,EAAC,MAAM,CAAC,CAAC;IAClC,CAAC;CACF;AAXD,0BAWC"}
