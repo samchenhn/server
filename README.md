@@ -31,6 +31,28 @@
 $ npm install
 ```
 
+## Server Configuration
+
+The application runs on **port 3200** by default. You can customize the port using the `PORT` environment variable:
+
+```bash
+# Default port (3200)
+$ npm run start:dev
+
+# Custom port
+$ PORT=3201 npm run start:dev
+```
+
+Once running, the API will be available at `http://localhost:3200/server`.
+
+### API Endpoints
+
+- Health Check: `GET /server`
+- User Authentication: `POST /server/auth/login`
+- User Management: `GET /server/users` (requires authentication)
+
+For detailed API documentation, see the [docs/api](./docs/api/) directory.
+
 ## Compile and run the project
 
 ```bash
@@ -71,6 +93,15 @@ $ mau deploy
 With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
 
 ## Resources
+
+### Project Documentation
+
+- [Quick Start Guide](./docs/quick-start.md) - Get started with development
+- [Configuration Guide](./docs/configuration.md) - Environment variables and settings
+- [Deployment Guide](./docs/deployment.md) - Docker and PM2 deployment
+- [API Documentation](./docs/api/) - Detailed API reference
+
+### NestJS Resources
 
 Check out a few resources that may come in handy when working with NestJS:
 

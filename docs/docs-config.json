@@ -1,0 +1,130 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-08-26",
+  "serverPort": 3200,
+  "apiPrefix": "/server",
+  "documentation": {
+    "overview": {
+      "title": "Qoder Server 文档",
+      "description": "基于 NestJS 的服务端应用文档",
+      "file": "README.md"
+    },
+    "quickStart": {
+      "title": "快速开始",
+      "description": "项目安装、配置和基本使用指南",
+      "file": "quick-start.md",
+      "tags": ["setup", "development", "getting-started"]
+    },
+    "configuration": {
+      "title": "配置文档",
+      "description": "环境变量和应用配置详解",
+      "file": "configuration.md",
+      "tags": ["config", "environment", "settings"]
+    },
+    "deployment": {
+      "title": "部署指南",
+      "description": "Docker 和 PM2 生产环境部署方案",
+      "file": "deployment.md",
+      "tags": ["deployment", "docker", "pm2", "production"]
+    },
+    "api": {
+      "title": "API 文档",
+      "description": "完整的 REST API 接口文档",
+      "directory": "api/",
+      "files": [
+        {
+          "name": "auth.md",
+          "title": "认证 API",
+          "description": "用户登录和身份验证接口",
+          "endpoints": ["/server/auth/login", "/server/auth/profile", "/server/auth/logout"],
+          "tags": ["auth", "login", "jwt"]
+        },
+        {
+          "name": "users.md",
+          "title": "用户管理 API",
+          "description": "用户 CRUD 操作接口",
+          "endpoints": ["/server/users", "/server/users/:id"],
+          "tags": ["users", "crud", "management"],
+          "requiresAuth": true
+        },
+        {
+          "name": "roles.md",
+          "title": "角色管理 API",
+          "description": "角色和权限管理接口",
+          "endpoints": [],
+          "tags": ["roles", "permissions", "rbac"],
+          "requiresAuth": true
+        },
+        {
+          "name": "users-admin.md",
+          "title": "用户管理后台 API",
+          "description": "管理员用户操作接口",
+          "endpoints": [],
+          "tags": ["admin", "users", "management"],
+          "requiresAuth": true
+        }
+      ]
+    },
+    "technical": {
+      "title": "技术文档",
+      "description": "架构和技术实现文档",
+      "files": [
+        {
+          "name": "auth-module-summary.md",
+          "title": "认证模块总结",
+          "description": "认证系统架构和实现"
+        },
+        {
+          "name": "logger-usage.md",
+          "title": "日志使用指南",
+          "description": "日志系统配置和使用方法"
+        },
+        {
+          "name": "test-and-sync-report.md",
+          "title": "测试和同步报告",
+          "description": "测试策略和实施情况"
+        }
+      ]
+    }
+  },
+  "server": {
+    "defaultPort": 3200,
+    "apiPrefix": "/server",
+    "healthCheck": "/server",
+    "environment": {
+      "development": {
+        "port": 3200,
+        "command": "npm run start:dev"
+      },
+      "production": {
+        "port": 3200,
+        "command": "npm run start:prod"
+      }
+    }
+  },
+  "endpoints": {
+    "health": "GET /server",
+    "auth": {
+      "login": "POST /server/auth/login",
+      "profile": "GET /server/auth/profile",
+      "logout": "POST /server/auth/logout"
+    },
+    "users": {
+      "list": "GET /server/users",
+      "create": "POST /server/users",
+      "get": "GET /server/users/:id",
+      "update": "PATCH /server/users/:id",
+      "delete": "DELETE /server/users/:id",
+      "byEmail": "GET /server/users/email/:email",
+      "byUsername": "GET /server/users/username/:username"
+    }
+  },
+  "authentication": {
+    "required": ["users", "roles", "admin"],
+    "optional": [],
+    "public": ["auth.login", "health"],
+    "tokenType": "JWT",
+    "headerName": "Authorization",
+    "headerPrefix": "Bearer "
+  }
+}
