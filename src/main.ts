@@ -17,7 +17,7 @@ async function bootstrap() {
   // 应用全局日志拦截器
   app.useGlobalInterceptors(new LoggingInterceptor(loggerService));
 
-  const port = process.env.PORT ?? 3000;
+  const port = process.env.PORT ?? 3200;
   await app.listen(port);
 
   loggerService.log(`Application is running on port ${port}`, 'Bootstrap');
